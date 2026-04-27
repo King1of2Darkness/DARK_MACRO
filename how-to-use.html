@@ -459,17 +459,7 @@
     document.addEventListener("mouseleave", () => { mx = -1000; my = -1000; });
     loop();
   })();
-
-  // ===== KEYBOARD SHORTCUTS (work on all pages) =====
-  document.addEventListener("keydown", function(e) {
-    if (!e.altKey) return;
-    const k = e.key.toLowerCase();
-    if (k === "f") { e.preventDefault(); if(typeof quickFont==="function") quickFont(); else if(typeof toggleLargeText==="function") toggleLargeText(); }
-    if (k === "c") { e.preventDefault(); if(typeof toggleContrast==="function") toggleContrast(); }
-    if (k === "m") { e.preventDefault(); if(typeof toggleMotion==="function") toggleMotion(); else { const b=document.body; b.classList.toggle("no-motion"); localStorage.setItem("dm-motion", b.classList.contains("no-motion")); const g=document.getElementById("cursor-glow"); if(g) g.style.opacity = b.classList.contains("no-motion")?"0":""; } }
-    if (k === "r") { e.preventDefault(); if(typeof toggleReading==="function") toggleReading(); else { const b=document.body; b.classList.toggle("reading-mode"); localStorage.setItem("dm-reading", b.classList.contains("reading-mode")); } }
-    if (k === "l") { e.preventDefault(); if(typeof toggleLang==="function") toggleLang(); }
-  });
 </script>
+<script src="shortcuts.js"></script>
 </body>
 </html>
