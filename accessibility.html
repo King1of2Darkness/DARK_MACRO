@@ -472,17 +472,6 @@
   }
   function toggleReading() { applyReading(!readingMode); }
 
-  // ===== KEYBOARD SHORTCUTS =====
-  document.addEventListener('keydown', e => {
-    if (e.altKey) {
-      if (e.key === 'f' || e.key === 'F') quickFont();
-      if (e.key === 'c' || e.key === 'C') toggleContrast();
-      if (e.key === 'r' || e.key === 'R') toggleReading();
-      if (e.key === 'm' || e.key === 'M') toggleMotion();
-      if (e.key === 'l' || e.key === 'L') toggleLang();
-    }
-  });
-
   // ===== INIT — apply saved settings on load =====
   window.addEventListener('DOMContentLoaded', () => {
     applyLang(currentLang);
@@ -509,5 +498,6 @@
     loop();
   })();
 </script>
+<script src="shortcuts.js"></script>
 </body>
 </html>
