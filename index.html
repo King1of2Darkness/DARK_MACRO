@@ -494,6 +494,24 @@
     document.getElementById('lang-overlay').classList.remove('hidden');
   }
 
+  function toggleLang() {
+    setLang(currentLang === 'en' ? 'ar' : 'en');
+  }
+
+  function toggleMotion() {
+    const on = !document.body.classList.contains('no-motion');
+    document.body.classList.toggle('no-motion', on);
+    localStorage.setItem('dm-motion', on);
+    const g = document.getElementById('cursor-glow');
+    if (g) g.style.opacity = on ? '0' : '';
+  }
+
+  function toggleReading() {
+    const on = !document.body.classList.contains('reading-mode');
+    document.body.classList.toggle('reading-mode', on);
+    localStorage.setItem('dm-reading', on);
+  }
+
   // ===== ACCESSIBILITY =====
   let largeText    = parseInt(localStorage.getItem('dm-font') || 16) >= 19;
   let highContrast = localStorage.getItem('dm-contrast') === 'true';
@@ -547,6 +565,15 @@
   });
 </script>
 
+<!-- اختصارات Alt+Shift — HTML ثابت (يشتغل حتى لو JS الخارجي فشل) -->
+<div id="dm-shortcuts" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+  <button type="button" accesskey="f" onclick="toggleLargeText()">F</button>
+  <button type="button" accesskey="c" onclick="toggleContrast()">C</button>
+  <button type="button" accesskey="r" onclick="toggleReading()">R</button>
+  <button type="button" accesskey="m" onclick="toggleMotion()">M</button>
+  <button type="button" accesskey="l" onclick="toggleLang()">L</button>
+</div>
+
 <script>
   // ===== CURSOR GLOW =====
   (function() {
@@ -581,6 +608,6 @@
     loop();
   })();
 </script>
-<script src="shortcuts.js"></script>
+<script src="shortcuts.js?v=7"></script>
 </body>
 </html>

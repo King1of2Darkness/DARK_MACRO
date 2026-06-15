@@ -296,27 +296,32 @@
       </thead>
       <tbody>
         <tr>
-          <td><span class="kbd">Alt + F</span></td>
+          <td><span class="kbd" data-ar="Alt + Shift + F" data-en="Alt + Shift + F">Alt + Shift + F</span></td>
           <td data-ar="تكبير الخط" data-en="Increase Font Size">تكبير الخط</td>
         </tr>
         <tr>
-          <td><span class="kbd">Alt + C</span></td>
+          <td><span class="kbd" data-ar="Alt + Shift + C" data-en="Alt + Shift + C">Alt + Shift + C</span></td>
           <td data-ar="تفعيل/إيقاف التباين العالي" data-en="Toggle High Contrast">تفعيل/إيقاف التباين العالي</td>
         </tr>
         <tr>
-          <td><span class="kbd">Alt + R</span></td>
+          <td><span class="kbd" data-ar="Alt + Shift + R" data-en="Alt + Shift + R">Alt + Shift + R</span></td>
           <td data-ar="تفعيل/إيقاف وضع القراءة" data-en="Toggle Reading Mode">تفعيل/إيقاف وضع القراءة</td>
         </tr>
         <tr>
-          <td><span class="kbd">Alt + M</span></td>
+          <td><span class="kbd" data-ar="Alt + Shift + M" data-en="Alt + Shift + M">Alt + Shift + M</span></td>
           <td data-ar="تفعيل/إيقاف الحركة" data-en="Toggle Stop Motion">تفعيل/إيقاف الحركة</td>
         </tr>
         <tr>
-          <td><span class="kbd">Alt + L</span></td>
+          <td><span class="kbd" data-ar="Alt + Shift + L" data-en="Alt + Shift + L">Alt + Shift + L</span></td>
           <td data-ar="تبديل اللغة" data-en="Switch Language">تبديل اللغة</td>
         </tr>
       </tbody>
     </table>
+    <p style="padding:1rem 1.2rem;font-size:0.85rem;color:var(--text-muted);border-top:1px solid var(--border);margin:0;"
+       data-ar="اضغط Alt + Shift + الحرف مع بعض. إذا Alt+Shift بيغيّر لغة الكيبورد عندك: Settings → Time &amp; Language → Typing → Advanced keyboard settings → عطّل Language bar shortcut. ثم Ctrl+F5."
+       data-en="Press Alt + Shift + letter together. If Alt+Shift switches your keyboard language: Settings → Time &amp; Language → Typing → Advanced keyboard settings → disable Language bar shortcut. Then Ctrl+F5.">
+      اضغط Alt + Shift + الحرف مع بعض. إذا Alt+Shift بيغيّر لغة الكيبورد عندك: Settings → Time &amp; Language → Typing → Advanced keyboard settings → عطّل Language bar shortcut. ثم Ctrl+F5.
+    </p>
   </div>
 </section>
 
@@ -481,6 +486,16 @@
     if (readingMode)  applyReading(true);
   });
 </script>
+
+<!-- اختصارات Alt+Shift — HTML ثابت (يشتغل حتى لو JS الخارجي فشل) -->
+<div id="dm-shortcuts" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+  <button type="button" accesskey="f" onclick="quickFont()">F</button>
+  <button type="button" accesskey="c" onclick="toggleContrast()">C</button>
+  <button type="button" accesskey="r" onclick="toggleReading()">R</button>
+  <button type="button" accesskey="m" onclick="toggleMotion()">M</button>
+  <button type="button" accesskey="l" onclick="toggleLang()">L</button>
+</div>
+
 <script>
   // ===== CURSOR GLOW =====
   (function() {
@@ -498,6 +513,6 @@
     loop();
   })();
 </script>
-<script src="shortcuts.js"></script>
+<script src="shortcuts.js?v=7"></script>
 </body>
 </html>
